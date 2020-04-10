@@ -25,13 +25,14 @@ class MaskInfo
     }
     
     /**確定記錄是否存在**/
-    public function exists(){
+    public function exists()
+    {
         $exist = DB::table('masks')->where('m_id', 1)->exists();
         return $exist;
     }
 
-    public function updateDB($arr_data, $exist){
-        
+    public function updateDB($arr_data, $exist)
+    {
         for ($i = 1; $i < count($arr_data)-1; $i++) {
             $arr_data1 = mb_split(",", $arr_data[$i]);
             if ($exist > 0) {
