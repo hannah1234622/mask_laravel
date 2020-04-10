@@ -149,9 +149,17 @@
     function send() 
     {
         var city = document.getElementById("city").value;
-        var region = document.getElementById("region").value;
-        var location = regions[city][region];
-        document.location.href = "http://127.0.0.1/mask/" + city + "/" + region + "/" + location;
+        if (city != 0) {
+            var region = document.getElementById("region").value;
+            if (region != 0) {
+                var location = regions[city][region];
+                document.location.href = "http://127.0.0.1/mask/" + city + "/" + region + "/" + location;
+            } else {
+                alert("請選擇縣市與區域～");
+            }
+        }else{
+            alert("請選擇縣市與區域～");
+        }
     };
     function change(value) 
     {
@@ -166,7 +174,7 @@
             node.appendChild(text);//將內容移動到node元素
             if (i == ary2) {
                 node.setAttribute("selected", 'true');
-            }          
+            } 
             document.getElementById("region").appendChild(node);//在region的id賦予node元素
         }
     };
