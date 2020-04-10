@@ -16,11 +16,7 @@ class MaskController extends Controller
             $rows = \App\Region::where('Institution_Address', 'LIKE', '%'.$county_city.'%'.$location.'%')
                     ->orderBy('m_id', 'desc')
                     ->get();
-        }else {
-            $rows = \App\Region::where('Institution_Address', 'LIKE', '%'.$location.'%')
-                    ->orderBy('m_id', 'desc')
-                    ->get();
-        }   
+        }
         return view('region', compact('rows', 'county_city', 'region', 'location', 'city'));
     }
 }

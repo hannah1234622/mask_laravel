@@ -22,6 +22,6 @@ class BetRecordController extends Controller
         $insert_data = $game_data->betRecord($token_data, $record_params);
         $game_data->getbetRecord($insert_data);
         $url = "administration";
-        $game_data->redirect($url);
+        //$game_data->redirect($url);
     }
 }

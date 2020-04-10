@@ -11,9 +11,7 @@ class MaskInfo
     public function get()
     {
         $curl = new  \Curl \ Curl();
-        $curl -> setUserAgent(' ');//設置瀏覽器Agent信息
-        $curl -> setReferrer(' ');
-        $curl -> setHeader(' X-Requested-With ', ' XMLHttpRequest');
+        $curl -> setHeader('X-Requested-With', 'XMLHttpRequest');
         $curl -> get('https://data.nhi.gov.tw/resource/mask/maskdata.csv');//用curl獲取網頁頁面內容
         if ($curl -> error) {
             echo $curl -> error_code; //錯誤則顯示錯誤訊息
@@ -21,6 +19,7 @@ class MaskInfo
         else {
             $data = $curl -> response;//curl出成功的響應
             $arr_data = mb_split("\n", $data);//將字串轉陣列
+            //var_dump($arr_data);
             return $arr_data;
         }
         $curl -> close();
@@ -33,6 +32,7 @@ class MaskInfo
     }
 
     public function updateDB($arr_data, $exist){
+        
         for ($i = 1; $i < count($arr_data)-1; $i++) {
             $arr_data1 = mb_split(",", $arr_data[$i]);
             if ($exist > 0) {

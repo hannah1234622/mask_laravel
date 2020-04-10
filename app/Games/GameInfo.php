@@ -112,7 +112,13 @@ class GameInfo{
     {
         for ($i=0; $i < count($insert_data)-1; $i++) {
             //刪除資料後新增資料
-            $delete_rows = DB::table('record')->where('RecordSn', $insert_data[$i]['RecordSn'])->delete();
+            //$delete_rows = DB::table('record')->where('RecordSn', $insert_data[$i]['RecordSn'])->delete();
+            //print_r($insert_data[$i]['RecordSn']);
+            
+            $as = DB::table('record')->get();
+            var_dump($insert_data[$i]['RecordSn']);
+            var_dump($as[0]);
+            /*
             $add_rows = DB::table('record')->insert([
                 'RecordSn' => $insert_data[$i]['RecordSn'],
                 'LoginName' => $insert_data[$i]['LoginName'],
@@ -133,6 +139,7 @@ class GameInfo{
                 'MiniJPContribution' => $insert_data[$i]['MiniJPContribution'],
                 'JPBet' => $insert_data[$i]['JPBet'],
             ]);
+            */
         } 
         
     }
