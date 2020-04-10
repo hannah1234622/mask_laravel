@@ -160,10 +160,10 @@
         var ary1 = url.split('/');
         var ary2 = ary1[3];
         for (var i=0;i<regions[value].length;i++){ //for(變數為零;regionArray矩陣長度-1;變數加一)
-            var node = document.createElement("option");//插入option元素
-            var text = document.createTextNode(regions[value][i]);//獲取陣列的元素
-            node.setAttribute("value",i);
-            node.appendChild(text);//將text移動到node元素
+            var node = document.createElement("option");//產生一個option的容器
+            var text = document.createTextNode(regions[value][i]);//產生文字節點後 將含有數據的字串加入文字節點中
+            node.setAttribute("value",i);//為變數node賦予屬性
+            node.appendChild(text);//將內容移動到node元素
             if (i == ary2) {
                 node.setAttribute("selected", 'true');
             }          
@@ -172,23 +172,27 @@
     };
     $(function () 
     {
+        //取得路由參數
         if (!!window.performance && window.performance.navigation.type === 0) {
-            //取得路由參數
+            //載入下一頁    
             console.log('navigation');
             var url = location.pathname;
             var ary1 = url.split('/');
             var ary2 = ary1[2];
             change(ary2);
         }
+        //取得路由參數
         if (!!window.performance && window.performance.navigation.type === 1) {
-            //取得路由參數
+            //重整
             console.log('Reloading');
             var url = location.pathname;
             var ary1 = url.split('/');
             var ary2 = ary1[2];
             change(ary2);
         }
+        //取得路由參數
         if (!!window.performance && window.performance.navigation.type === 2) {
+            //回上一頁
             console.log('backforward');
             window.location.reload();
         }

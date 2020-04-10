@@ -11,7 +11,7 @@ class MaskInfo
     public function get()
     {
         $curl = new  \Curl \ Curl();
-        $curl -> setHeader('X-Requested-With', 'XMLHttpRequest');
+        $curl -> setHeader('X-Requested-With', 'XMLHttpRequest');//XMLHttpRequest是js的class物件 能傳遞資料到網頁伺服器 並獲取回應
         $curl -> get('https://data.nhi.gov.tw/resource/mask/maskdata.csv');//用curl獲取網頁頁面內容
         if ($curl -> error) {
             echo $curl -> error_code; //錯誤則顯示錯誤訊息
@@ -19,7 +19,6 @@ class MaskInfo
         else {
             $data = $curl -> response;//curl出成功的響應
             $arr_data = mb_split("\n", $data);//將字串轉陣列
-            //var_dump($arr_data);
             return $arr_data;
         }
         $curl -> close();
