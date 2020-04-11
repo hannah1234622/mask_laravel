@@ -14,7 +14,6 @@
     @if (isset($county_city) && isset($region))
         @if (count($rows)!=0)
         <table class='table table-striped'>
-            @foreach($rows as $row)
             <thead>
                 <tr>
                     <td>機構編號</td>
@@ -27,6 +26,7 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($rows as $row)
                 <tr>
                     <td>{{$row->Institution_Code}}</td>
                     <td>{{$row->Institution_Name}}</td>
@@ -35,9 +35,9 @@
                     <td>{{$row->Adult_Mask}}</td>
                     <td>{{$row->Child_Mask}}</td>
                     <td>{{$row->Source_Time}}</td>
-                </tr> 
+                </tr>
+                @endforeach 
             </tbody>
-            @endforeach
         @else
             <h3 style="color:red;">查無資料</h3>
         @endif             
